@@ -18,6 +18,7 @@ export const goods = [
 
 export const App = () => {
   const [value, setValue] = useState('Jam');
+  const reset = () => setValue('');
 
   return (
     <main className="section container">
@@ -28,9 +29,7 @@ export const App = () => {
             data-cy="ClearButton"
             type="button"
             className="delete ml-3"
-            onClick={() => {
-              setValue('');
-            }}
+            onClick={reset}
           />
         </h1>
       ) : (
@@ -43,6 +42,7 @@ export const App = () => {
         <tbody>
           {goods.map(good => (
             <tr
+              key={good}
               data-cy="Good"
               className={classNames({
                 'has-background-success-light': good === value,
